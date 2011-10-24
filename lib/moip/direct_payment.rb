@@ -79,6 +79,29 @@ module MoIP
                 xml.text attributes[:id_proprio]
               }
 
+              if attributes[:pagador]
+                # Dados do pagador
+                xml.Pagador {
+                  xml.Nome { xml.text attributes[:pagador][:nome] }
+                  xml.LoginMoIP { xml.text attributes[:pagador][:login_moip] }
+                  xml.Email { xml.text attributes[:pagador][:email] }
+                  xml.TelefoneCelular { xml.text attributes[:pagador][:tel_cel] }
+                  xml.Apelido { xml.text attributes[:pagador][:apelido] }
+                  xml.Identidade { xml.text attributes[:pagador][:identidade] }
+                  xml.EnderecoCobranca {
+                    xml.Logradouro { xml.text attributes[:pagador][:logradouro] }
+                    xml.Numero { xml.text attributes[:pagador][:numero] }
+                    xml.Complemento { xml.text attributes[:pagador][:complemento] }
+                    xml.Bairro { xml.text attributes[:pagador][:bairro] }
+                    xml.Cidade { xml.text attributes[:pagador][:cidade] }
+                    xml.Estado { xml.text attributes[:pagador][:estado] }
+                    xml.Pais { xml.text attributes[:pagador][:pais] }
+                    xml.CEP { xml.text attributes[:pagador][:cep] }
+                    xml.TelefoneFixo { xml.text attributes[:pagador][:tel_fixo] }
+                  }
+                }
+              end
+
               if attributes[:forma]
                 # Definindo o pagamento direto
                 xml.PagamentoDireto {
@@ -133,29 +156,6 @@ module MoIP
                     }
                   end
                 }
-
-                if attributes[:pagador]
-                  # Dados do pagador
-                  xml.Pagador {
-                    xml.Nome { xml.text attributes[:pagador][:nome] }
-                    xml.LoginMoIP { xml.text attributes[:pagador][:login_moip] }
-                    xml.Email { xml.text attributes[:pagador][:email] }
-                    xml.TelefoneCelular { xml.text attributes[:pagador][:tel_cel] }
-                    xml.Apelido { xml.text attributes[:pagador][:apelido] }
-                    xml.Identidade { xml.text attributes[:pagador][:identidade] }
-                    xml.EnderecoCobranca {
-                      xml.Logradouro { xml.text attributes[:pagador][:logradouro] }
-                      xml.Numero { xml.text attributes[:pagador][:numero] }
-                      xml.Complemento { xml.text attributes[:pagador][:complemento] }
-                      xml.Bairro { xml.text attributes[:pagador][:bairro] }
-                      xml.Cidade { xml.text attributes[:pagador][:cidade] }
-                      xml.Estado { xml.text attributes[:pagador][:estado] }
-                      xml.Pais { xml.text attributes[:pagador][:pais] }
-                      xml.CEP { xml.text attributes[:pagador][:cep] }
-                      xml.TelefoneFixo { xml.text attributes[:pagador][:tel_fixo] }
-                    }
-                  }
-                end
 
                 # Boleto Bancario
                 if attributes[:forma] == "BoletoBancario"
