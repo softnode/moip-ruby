@@ -39,7 +39,7 @@ Após realizar os testes na SandBox, você poderá fazer a mudança para o ambie
 ###Crie os dados do pagador
 
     pagador = { :nome => "Luiz Inácio Lula da Silva",
-                :login_moip => "lula",
+                :id => "1",
                 :email => "presidente@planalto.gov.br",
                 :tel_cel => "(61)9999-9999",
                 :apelido => "Lula",
@@ -60,7 +60,8 @@ Após realizar os testes na SandBox, você poderá fazer a mudança para o ambie
                :id_proprio => "Pag#{rand(1000)}",
                :forma => "BoletoBancario",
                :dias_expiracao => 5,
-               :pagador => pagador }
+               :pagador => pagador,
+               :razao => "Camisa do Corinthians" }
 
 ###Checkout
 
