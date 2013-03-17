@@ -23,5 +23,6 @@ Gem::Specification.new do |gem|
 
   gem.add_runtime_dependency(%q<nokogiri>, [">= 1.5.0"])
   gem.add_runtime_dependency(%q<httparty>, ["~> 0.12.0"])
+
   gem.add_runtime_dependency(%q<activesupport>, [">= 2.3.2"])
 end
