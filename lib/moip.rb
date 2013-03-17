@@ -15,7 +15,7 @@ module MoIP
 
   class InvalidCellphone < ValidationError; end
   class InvalidExpiry < ValidationError; end
-  class InvalidInstitution < ValidationError; end    
+  class InvalidInstitution < ValidationError; end
   class InvalidPhone < ValidationError; end
   class InvalidReceiving < ValidationError; end
   class InvalidValue < ValidationError; end

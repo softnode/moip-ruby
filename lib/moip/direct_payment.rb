@@ -27,7 +27,7 @@ module MoIP
   TipoRecebimento = %w{AVista Parcelado}
   TipoRestricao = %w{Autorizacao Pagamento}
   TipoStatus = %w{Sucesso Falha}
-  
+
   #
   TiposComInstituicao = %w{CartaoCredito DebitoBancario}
   TiposComNascimento = %w{CartaoCredito}
@@ -168,14 +168,14 @@ module MoIP
                   }
                 }
               end
-              
+
               if attributes[:url_retorno]
                 # URL de retorno
                 xml.URLRetorno {
                   xml.text attributes[:url_retorno]
                 }
               end
-                
+
             }
           }
         end

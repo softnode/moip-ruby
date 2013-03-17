@@ -24,7 +24,7 @@ module MoIP
       #         <Status>{status da conta}</Status>
       #     </RespostaVerificarConta>
       # </ns1:verificarContaResponse>
-      # 
+      #
       # Valores Esperados: {status da conta}
       # Inexistente " Login inexistente no sistema MoIP "
       # Criado  " Login criado, porem não verificado "
@@ -80,7 +80,7 @@ module MoIP
         raise(MissingTokenError, "É necessário informar um token na configuração") if MoIP.token.nil? || MoIP.token.empty?
 
         raise(MissingKeyError, "É necessário informar um key na configuração") if MoIP.key.nil? || MoIP.key.empty?
-        
+
         response = self.send(action_name, url, options)
         raise(WebServerResponseError, "Ocorreu um erro ao chamar o webservice") if response.nil?
         response
