@@ -83,7 +83,7 @@ module MoIP
                 # Dados do pagador
                 xml.Pagador {
                   xml.Nome { xml.text attributes[:pagador][:nome] }
-                  xml.LoginMoIP { xml.text attributes[:pagador][:login_moip] }
+                  xml.IdPagador { xml.text attributes[:pagador][:id] }
                   xml.Email { xml.text attributes[:pagador][:email] }
                   xml.TelefoneCelular { xml.text attributes[:pagador][:tel_cel] }
                   xml.Apelido { xml.text attributes[:pagador][:apelido] }
