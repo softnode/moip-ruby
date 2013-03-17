@@ -9,7 +9,7 @@ describe "Make payments with the MoIP API" do
   let(:id){ '1' }
 
   before :all do
-
+    id = 1
     @pagador = { :nome => "Luiz Inácio Lula da Silva",
                 :login_moip => "lula",
                 :email => "presidente@planalto.gov.br",
@@ -57,49 +57,50 @@ describe "Make payments with the MoIP API" do
       MoIP::Client # for autoload
       lambda { MoIP::Client.checkout(@billet) }.should raise_error(MoIP::MissingConfigError)
     end
-    
+
     it "should raise a missing token error when token is nil" do
       MoIP.setup do |config|
         config.uri = 'https://desenvolvedor.moip.com.br/sandbox'
         config.token = nil
         config.key = 'key'
       end
-      
+
       MoIP::Client # for autoload
       lambda { MoIP::Client.checkout(@billet) }.should raise_error(MoIP::MissingTokenError)
     end
-    
+
     it "should raise a missing key error when key is nil" do
-      
+
       MoIP.setup do |config|
         config.uri = 'https://desenvolvedor.moip.com.br/sandbox'
         config.token = 'token'
         config.key = nil
       end
-      
+
       MoIP::Client # for autoload
       lambda { MoIP::Client.checkout(@billet) }.should raise_error(MoIP::MissingKeyError)
     end
-    
+
+
     it "should raise a missing token error when token is empty" do
       MoIP.setup do |config|
         config.uri = 'https://desenvolvedor.moip.com.br/sandbox'
         config.token = ''
         config.key = 'key'
       end
-      
+
       MoIP::Client # for autoload
       lambda { MoIP::Client.checkout(@billet) }.should raise_error(MoIP::MissingTokenError)
     end
-    
+
     it "should raise a missing key error when key is empty" do
-      
+
       MoIP.setup do |config|
         config.uri = 'https://desenvolvedor.moip.com.br/sandbox'
         config.token = 'token'
         config.key = ''
       end
-      
+
       MoIP::Client # for autoload
       lambda { MoIP::Client.checkout(@billet) }.should raise_error(MoIP::MissingKeyError)
     end
@@ -115,7 +116,7 @@ describe "Make payments with the MoIP API" do
     end
 
     it "should have a threadsafe config" do
-      thread = Thread.new do 
+      thread = Thread.new do
         MoIP.setup {|config| config.uri = 'https://desenvolvedor.moip.com.br/another_sandbox' }
         MoIP.uri.should eq('https://desenvolvedor.moip.com.br/another_sandbox')
       end
@@ -125,9 +126,9 @@ describe "Make payments with the MoIP API" do
       MoIP.uri.should eq('https://desenvolvedor.moip.com.br/sandbox')
     end
   end
-  
+
   context "validations" do
-    
+
     before(:each) do
       MoIP.setup do |config|
         config.uri = 'https://desenvolvedor.moip.com.br/sandbox'
@@ -335,7 +336,7 @@ describe "Make payments with the MoIP API" do
   end
 
   context "query a transaction token" do
-    
+
     before(:each) do
 
       MoIP.setup do |config|
