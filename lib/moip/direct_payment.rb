@@ -85,9 +85,9 @@ module MoIP
                   xml.Nome { xml.text attributes[:pagador][:nome] }
                   xml.IdPagador { xml.text attributes[:pagador][:id] }
                   xml.Email { xml.text attributes[:pagador][:email] }
-                  xml.TelefoneCelular { xml.text attributes[:pagador][:tel_cel] }
-                  xml.Apelido { xml.text attributes[:pagador][:apelido] }
-                  xml.Identidade { xml.text attributes[:pagador][:identidade] }
+                  xml.TelefoneCelular { xml.text attributes[:pagador][:tel_cel] } if attributes[:pagador][:tel_cel]
+                  xml.Apelido { xml.text attributes[:pagador][:apelido] } if attributes[:pagador][:apelido]
+                  xml.Identidade { xml.text attributes[:pagador][:identidade] } if attributes[:pagador][:identidade]
                   xml.EnderecoCobranca {
                     xml.Logradouro { xml.text attributes[:pagador][:logradouro] }
                     xml.Numero { xml.text attributes[:pagador][:numero] }
