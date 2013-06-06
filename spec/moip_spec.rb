@@ -6,6 +6,7 @@ MoIP::Client
 MoIP::DirectPayment
 
 describe "Make payments with the MoIP API" do
+  let(:id){ '1' }
 
   before :all do
 
