@@ -28,6 +28,7 @@ describe "Make payments with the MoIP API" do
 
     @billet_without_razao = { :valor => "8.90", :id_proprio => id,
                               :forma => "BoletoBancario", :pagador => @pagador}
+
     @billet = { :valor => "8.90", :id_proprio => id,
                 :forma => "BoletoBancario", :pagador => @pagador ,
                 :razao=> "Pagamento" }
@@ -42,7 +43,7 @@ describe "Make payments with the MoIP API" do
                 :nome => "João Silva", :identidade => "134.277.017.00",
                 :telefone => "(21)9208-0547", :data_nascimento => "25/10/1980",
                 :parcelas => "2", :recebimento => "AVista",
-                :pagador => @pagador, :razao => "Pagamento"}
+                :pagador => @pagador, :razao => "Pagamento" }
   end
 
   context "misconfigured" do
@@ -160,24 +161,24 @@ describe "Make payments with the MoIP API" do
       lambda { MoIP::Client.checkout(@data) }.should raise_error(MoIP::InvalidReceiving)
     end
     it "should raise invalid value error if 0" do
-      @credit[:valor] = 0
-      lambda { MoIP::Client.checkout(@credit) }.should raise_error(MoIP::InvalidValue)
+      @data = @credit.merge({:valor => 0})
+      lambda { MoIP::Client.checkout(@data) }.should raise_error(MoIP::InvalidValue)
     end
     it "should raise invalid value error if '0'" do
-      @credit[:valor] = '0'
-      lambda { MoIP::Client.checkout(@credit) }.should raise_error(MoIP::InvalidValue)
+      @data = @credit.merge({:valor => '0'})
+      lambda { MoIP::Client.checkout(@data) }.should raise_error(MoIP::InvalidValue)
     end
     it "should raise invalid value error if 0.0" do
-      @credit[:valor] = 0.0
-      lambda { MoIP::Client.checkout(@credit) }.should raise_error(MoIP::InvalidValue)
+      @data = @credit.merge({:valor => 0.0})
+      lambda { MoIP::Client.checkout(@data) }.should raise_error(MoIP::InvalidValue)
     end
     it "should raise invalid value error if '0.0'" do
-      @credit[:valor] = '0.0'
-      lambda { MoIP::Client.checkout(@credit) }.should raise_error(MoIP::InvalidValue)
+      @data = @credit.merge({:valor => '0.0'})
+      lambda { MoIP::Client.checkout(@data) }.should raise_error(MoIP::InvalidValue)
     end
     it "should raise invalid value error if -1" do
-      @credit[:valor] = -1
-      lambda { MoIP::Client.checkout(@credit) }.should raise_error(MoIP::InvalidValue)
+      @data = @credit.merge({:valor => -1})
+      lambda { MoIP::Client.checkout(@data) }.should raise_error(MoIP::InvalidValue)
     end
   end
 
@@ -278,6 +279,7 @@ describe "Make payments with the MoIP API" do
           config.key = 'key'
         end
       end
+
       it "should have status 'Sucesso' with valid arguments" do
         response = MoIP::Client.checkout(@credit)
         response["Status"].should == "Sucesso"
@@ -482,4 +484,4 @@ describe "Make payments with the MoIP API" do
   ensure
     ActiveSupport::Deprecation.behavior = old_behavior
   end
-  end
+end
