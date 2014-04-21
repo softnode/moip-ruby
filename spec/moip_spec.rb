@@ -200,13 +200,6 @@ describe "Make payments with the MoIP API" do
                      })
     end
 
-    it "with old api should be deprecated" do
-      deprecations = collect_deprecations{ MoIP.checkout(@billet) }
-
-      deprecations.should_not be_empty
-      deprecations.any? {|w| w =~ /MoIP.checkout has been deprecated/ }.should be_true
-    end
-
     context "when it is a billet checkout" do
       before(:each) do
         MoIP.setup do |config|
@@ -352,13 +345,6 @@ describe "Make payments with the MoIP API" do
                     })
     end
 
-    it "with old api should be deprecated" do
-      deprecations = collect_deprecations{ MoIP.query(token) }
-
-      deprecations.should_not be_empty
-      deprecations.any? {|w| w =~ /MoIP.query has been deprecated/ }.should be_true
-    end
-
     it "should retrieve the transaction" do
       response = MoIP::Client.query(token)
       response["Status"].should == "Sucesso"
@@ -393,12 +379,6 @@ describe "Make payments with the MoIP API" do
         config.token = 'token'
         config.key = 'key'
       end
-    end
-    it "with old api should be deprecated" do
-      deprecations = collect_deprecations{ MoIP.moip_page(token) }
-
-      deprecations.should_not be_empty
-      deprecations.any? {|w| w =~ /MoIP.moip_page has been deprecated/ }.should be_true
     end
 
     it "should build the correct URL" do
@@ -438,13 +418,6 @@ describe "Make payments with the MoIP API" do
                   "status_pagamento" => "3", "cod_moip" => "001",
                   "forma_pagamento" => "73", "tipo_pagamento" => "BoletoBancario",
                   "email_consumidor" => "presidente@planalto.gov.br" }
-    end
-
-    it "with old api should be deprecated" do
-      deprecations = collect_deprecations{ MoIP.notification(@param) }
-
-      deprecations.should_not be_empty
-      deprecations.any? {|w| w =~ /MoIP.notification has been deprecated/ }.should be_true
     end
 
     it "should return a hash with the params extracted from NASP" do
