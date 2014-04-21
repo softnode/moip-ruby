@@ -4,10 +4,10 @@ Gem::Specification.new do |gem|
   gem.name = %q{moip}
   gem.version = "1.1.0"
 
-  gem.authors = ["Guilherme Nascimento"]
+  gem.authors = ["Guilherme Nascimento", "Duke Khaos"]
   gem.date = %q{2010-11-10}
   gem.description = %q{Gem para utilização da API MoIP}
-  gem.email = %q{guilherme.ruby@gmail.com}
+  gem.email = %q{guilherme.ruby@gmail.com duke.m16@gmail.com}
   gem.summary = %q{Gem para utilização da API MoIP}
 
   gem.files = `git ls-files`.split("\n")
