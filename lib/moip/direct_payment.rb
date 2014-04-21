@@ -45,7 +45,7 @@ module MoIP
 
         raise(InvalidValue, "Valor deve ser maior que zero.") if attributes[:valor].nil? || attributes[:valor].to_f <= 0.0
         raise(InvalidPhone, "Telefone deve ter o formato (99)9999-9999.") if attributes[:pagador][:tel_fixo] !~ /\(\d{2}\)?\d{4}-\d{4}/
-        raise(InvalidCellphone, "Telefone celular deve ter o formato (99)9999-9999.") if attributes[:pagador][:tel_cel] !~ /\(\d{2}\)?\d{4}-\d{4}/
+        raise(InvalidCellphone, "Telefone celular deve ter o formato (99)9999-9999.") if attributes[:pagador][:tel_cel] && attributes[:pagador][:tel_cel] !~ /\(\d{2}\)?\d{4}-\d{4}/
 
         raise(MissingBirthdate, "É obrigatório informar a data de nascimento") if TiposComNascimento.include?(attributes[:forma]) && attributes[:data_nascimento].nil?
 

@@ -145,6 +145,10 @@ describe "Make payments with the MoIP API" do
       @data = @credit.merge({:pagador => {:tel_cel => 'InvalidCellphone', :tel_fixo => "(61)9999-9999"}})
       lambda { MoIP::Client.checkout(@data) }.should raise_error(MoIP::InvalidCellphone)
     end
+    it "should not raise invalid cellphone" do
+      @data = @credit.merge({:pagador => {:tel_cel => nil, :tel_fixo => "(61)9999-9999"}})
+      lambda { MoIP::Client.checkout(@data) }.should_not raise_error(MoIP::InvalidCellphone)
+    end
     it "should raise invalid expiry" do
       @data = @credit.merge({:expiracao => 'InvalidExpiry'})
       lambda { MoIP::Client.checkout(@data) }.should raise_error(MoIP::InvalidExpiry)
