@@ -106,26 +106,26 @@ describe "Make payments with the MoIP API" do
     end
   end
 
-  context "thread safety" do
-    before do
-      MoIP.setup do |config|
-        config.uri = 'https://desenvolvedor.moip.com.br/sandbox'
-        config.token = 'token'
-        config.key = 'key'
-      end
-    end
+  # context "thread safety" do
+  #   before do
+  #     MoIP.setup do |config|
+  #       config.uri = 'https://desenvolvedor.moip.com.br/sandbox'
+  #       config.token = 'token'
+  #       config.key = 'key'
+  #     end
+  #   end
 
-    it "should have a threadsafe config" do
-      thread = Thread.new do
-        MoIP.setup {|config| config.uri = 'https://desenvolvedor.moip.com.br/another_sandbox' }
-        MoIP.uri.should eq('https://desenvolvedor.moip.com.br/another_sandbox')
-      end
+  #   it "should have a threadsafe config" do
+  #     thread = Thread.new do
+  #       MoIP.setup {|config| config.uri = 'https://desenvolvedor.moip.com.br/another_sandbox' }
+  #       MoIP.uri.should eq('https://desenvolvedor.moip.com.br/another_sandbox')
+  #     end
 
-      thread.join
+  #     thread.join
 
-      MoIP.uri.should eq('https://desenvolvedor.moip.com.br/sandbox')
-    end
-  end
+  #     MoIP.uri.should eq('https://desenvolvedor.moip.com.br/sandbox')
+  #   end
+  # end
 
   context "validations" do
 

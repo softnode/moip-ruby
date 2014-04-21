@@ -24,18 +24,19 @@ module MoIP
   autoload :Client,        'moip/client'
   autoload :Config,        'moip/config'
 
-  def self.config
-    Thread.current[:moip_config] ||= MoIP::Config.new
-  end
+  # URI para acessar o serviço
+  mattr_accessor :uri
+  @@uri = 'https://www.moip.com.br'
+
+  # Token de autenticação
+  mattr_accessor :token
+
+  # Chave de acesso ao serviço
+  mattr_accessor :key
 
   def self.setup
-    yield config if block_given?
+    yield self if block_given?
   end
 
   STATUS = {1 => "authorized", 2 => "started", 3 => "printed", 4 => "completed", 5 => "canceled", 6 => "analysing"}
-
-  class << self
-    extend Forwardable
-    def_delegators :config, :uri, :token, :key
-  end
 end
