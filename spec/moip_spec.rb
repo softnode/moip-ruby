@@ -428,7 +428,7 @@ describe "Make payments with the MoIP API" do
 
     it "should return a hash with the params extracted from NASP" do
       response = { :transaction_id => "Pag62", :amount => "8.90",
-                   :status => "printed", :code => "001",
+                   :status => :printed, :code => "001",
                    :payment_type => "BoletoBancario",
                    :email => "presidente@planalto.gov.br",
                    :classification => "Test" }
@@ -437,12 +437,14 @@ describe "Make payments with the MoIP API" do
     end
 
     it "should return valid status based on status code" do
-      MoIP::STATUS[1].should == "authorized"
-      MoIP::STATUS[2].should == "started"
-      MoIP::STATUS[3].should == "printed"
-      MoIP::STATUS[4].should == "completed"
-      MoIP::STATUS[5].should == "canceled"
-      MoIP::STATUS[6].should == "analysing"
+      MoIP::STATUS[1].should == :authorized
+      MoIP::STATUS[2].should == :started
+      MoIP::STATUS[3].should == :printed
+      MoIP::STATUS[4].should == :completed
+      MoIP::STATUS[5].should == :canceled
+      MoIP::STATUS[6].should == :analysing
+      MoIP::STATUS[7].should == :refunded
+      MoIP::STATUS[9].should == :reversed
     end
   end
 

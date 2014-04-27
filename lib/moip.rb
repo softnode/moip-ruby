@@ -38,5 +38,14 @@ module MoIP
     yield self if block_given?
   end
 
-  STATUS = {1 => "authorized", 2 => "started", 3 => "printed", 4 => "completed", 5 => "canceled", 6 => "analysing"}
+  STATUS = {
+    1 => :authorized,
+    2 => :started,
+    3 => :printed,
+    4 => :completed,
+    5 => :canceled,
+    6 => :analysing,
+    7 => :refunded,
+    9 => :reversed
+  }
 end
