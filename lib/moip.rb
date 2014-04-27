@@ -22,7 +22,6 @@ module MoIP
 
   autoload :DirectPayment, 'moip/direct_payment'
   autoload :Client,        'moip/client'
-  autoload :Config,        'moip/config'
 
   # URI para acessar o serviço
   mattr_accessor :uri
