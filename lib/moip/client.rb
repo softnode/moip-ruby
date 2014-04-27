@@ -67,6 +67,7 @@ module MoIP
         notification[:code]           = params["cod_moip"]
         notification[:payment_type]   = params["tipo_pagamento"]
         notification[:email]          = params["email_consumidor"]
+        notification[:classification] = params["classificacao"]
         notification
       end
 

@@ -422,14 +422,16 @@ describe "Make payments with the MoIP API" do
       @params = { "id_transacao" => "Pag62", "valor" => "8.90",
                   "status_pagamento" => "3", "cod_moip" => "001",
                   "forma_pagamento" => "73", "tipo_pagamento" => "BoletoBancario",
-                  "email_consumidor" => "presidente@planalto.gov.br" }
+                  "email_consumidor" => "presidente@planalto.gov.br",
+                  "classificacao" => "Test" }
     end
 
     it "should return a hash with the params extracted from NASP" do
       response = { :transaction_id => "Pag62", :amount => "8.90",
                    :status => "printed", :code => "001",
                    :payment_type => "BoletoBancario",
-                   :email => "presidente@planalto.gov.br" }
+                   :email => "presidente@planalto.gov.br",
+                   :classification => "Test" }
 
       MoIP::Client.notification(@params).should == response
     end
