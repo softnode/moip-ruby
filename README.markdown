@@ -1,4 +1,4 @@
-# MoIP
+# MoIP [![Code Climate](https://codeclimate.com/github/dukex/moip-ruby.png)](https://codeclimate.com/github/dukex/moip-ruby)
 
 Esta Gem permite utilizar a API do MoIP, gateway de pagamentos do IG.
 
