@@ -1,13 +1,13 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |gem|
-  gem.name = %q{duke-moip}
-  gem.version = "0.2.0"
+  gem.name = %q{softnode-moip}
+  gem.version = "0.2.1"
 
-  gem.authors = ["Guilherme Nascimento", "Duke Khaos"]
+  gem.authors = ["Guilherme Nascimento", "Duke Khaos", "Igor Diniz (SoftNode)"]
   gem.date = %q{2010-11-10}
   gem.description = %q{Gem para utilização da API MoIP}
-  gem.email = %q{guilherme.ruby@gmail.com duke.m16@gmail.com}
+  gem.email = %q{guilherme.ruby@gmail.com duke.m16@gmail.com igor.diniz@softnode.com.br}
   gem.summary = %q{Gem para utilização da API MoIP}
 
   gem.files = `git ls-files`.split("\n")
